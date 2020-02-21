@@ -1,3 +1,18 @@
+<div class="rr-sidebar">
+  <ul class="rr-list">
+    {{#each this.model as |band|}}
+      <li class="rr-list-item">
+        <LinkTo @route="bands.band.songs" @model={{band.slug}} class="rr-band-link">
+          {{band.name}}
+          <span class="rr-pointer">
+            {{fa-icon "angle-right"}}
+          </span>
+        </LinkTo>
+      </li>
+    {{/each}}
+  </ul>
+</div>
+
 <ul class="list pl3">
   {{#each this.model as |band| }}
     <li>{{band.name}}</li>
