@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 
-export defualt Route.extend({
+export default Route.extend({
   model() {
     return this.modelFor('bands.band');
   }

@@ -5,7 +5,7 @@
         <LinkTo @route="bands.band.songs" @model={{band.slug}} class="rr-band-link">
           {{band.name}}
           <span class="rr-pointer">
-            {{fa-icon "angle-right"}}
+            {{fa-icon "fa-angle-right"}}
           </span>
         </LinkTo>
       </li>
@@ -13,8 +13,6 @@
   </ul>
 </div>
 
-<ul class="list pl3">
-  {{#each this.model as |band| }}
-    <li>{{band.name}}</li>
-  {{/each}}
-</ul>
+<div class="rr-main-panel">
+  {{outlet}}
+</div>
