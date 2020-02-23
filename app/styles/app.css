@@ -109,3 +109,12 @@ margin-bottom: 10px;
 .rr-band-link.active > .rr-pointer {
   display: inline-block;
 }
+
+.rating-star {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  background-color: inherit;
+}
