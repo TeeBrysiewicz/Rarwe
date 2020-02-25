@@ -12,5 +12,5 @@ export default Controller.extend({
     let band = this.model;
     await band.save();
     this.set('isEditing', false);
-  });
+  }),
 });
