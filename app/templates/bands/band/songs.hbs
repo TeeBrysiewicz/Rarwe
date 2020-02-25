@@ -1,6 +1,6 @@
 <ul class="rr-list">
   {{#each this.model.songs as |song|}}
-    <li class="rr-list-item">
+    <li class="rr-list-item" data-test-rr="song-list-item">
       {{song.title}}
       <StarRating
       class="fr"
@@ -17,19 +17,21 @@
 
 <div class="rr-new-label">
   {{#if this.isAddingSong}}
-    <form class="rr-inline-form" {{on "submit" this.saveSong}}>
+    <form class="rr-inline-form" {{on "submit" this.saveSong}} data-test-rr="new-song-form">
       <Input 
         @type="text"
         @value={{this.newSongTitle}}
         class="rr-input"
         placeholder="New Song"
+        data-test-rr="new-song-input"
       />
 
-      <div class="rr-inline-form-group ml-auto">
+      <div class="rr-inline-form-group ml2">
         <button 
           type="submit"
           class="rr-action-button"
-          disabled={{this.isAddButtonDisabled}}>
+          disabled={{this.isAddButtonDisabled}}
+          data-test-rr="new-song-button">
             Add
         </button>
 
@@ -42,13 +44,27 @@
       </div>
     </form>
   {{else}}
-    <button
+
+
+    <label 
+      type="label"
+      class="avenir bn bg-transparent near-white"
+      data-test-rr="new-song-label"
+      {{on "click" this.addSong}}>
+        {{fa-icon "plus"}}
+        Add New Song
+    </label>
+
+
+{{!--     <button
       type="button"
       class="avenir bn bg-transparent near-white"
       data-test-rr="new-song-label"
       {{on "click" this.addSong}}>
         {{fa-icon "plus"}}
         Add New Song
-    </button>
+    </button> --}}
+
+
   {{/if}}
 </div>
