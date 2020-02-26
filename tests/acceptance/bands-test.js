@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { visit, click, fillIn } from '@ember/test-helpers';
+import { visit, click, fillIn, currentURL } from '@ember/test-helpers';
 import { createBand } from 'rarwe/tests/helpers/custom-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { setupMirage } from 'ember-cli-mirage/test-support';
@@ -44,21 +44,25 @@ module('Acceptance | Bands', function(hooks) {
   
     await click('[data-test-rr=sort-by-title-desc]');
 
+    assert.equal(currentURL(), '/bands/1/songs?s=titleDesc');
     assert.dom('[data-test-rr=song-list-item]:first-child').hasText('Spinning in Daffodils', 'The first song is the one that comes last in the alphabet');
     assert.dom('[data-test-rr=song-list-item]:last-child').hasText('Elephants', 'The last song is the one that comes first in the alphabet');
   
     await click('[data-test-rr=sort-by-title-asc]');
 
+    assert.equal(currentURL(), 'bands/1/songs?s=titleAsc');
     assert.dom('[data-test-rr=song-list-item]:first-child').hasText('Elephants', 'The first song comes first in the alphabet');
     assert.dom('[data-test-rr=song-list-item]:last-child').hasText('Spinning in Daffodils', 'The last song comes last in the alphabet');
 
     await click('[data-test-rr=sort-by-rating-desc]');
 
+    asssert.equal(currentURL(), 'bands/1/songs?s=ratingDesc');
     assert.dom('[data-test-rr=song-list-item]:first-child').hasText('Elephants', 'The first song is the highest rated that also comes first in the alphabet');
     assert.dom('[data-test-rr=song-list-item]:last-child').hasText('New Fang', 'The last song is the lowest rated that also comes last in the alphabet');
 
     await click('[data-test-rr=sort-by-rating-asc]');
 
+    assert.equal(currentURL(), 'bands/1/songs?s=ratingAsc');
     assert.dom('[data-test-rr=song-list-item]:first-child').hasText('New Fang', 'The first song is the highest rated that also comes first in the alphabet');
     assert.dom('[data-test-rr=song-list-item]:last-child').hasText('Spinning in Daffodils', 'The last song is the lowest rated that also comes last in the alphabet');
   });
@@ -75,10 +79,13 @@ module('Acceptance | Bands', function(hooks) {
     await click('[data-test-rr=band-link]');
     await fillIn('[data-test-rr=search-box]', 'no');
 
+    assert.equal(currentURL(), '/bands/1/songs?s=q=no');
     assert.dom('[data-test-rr=song-list-item]').exists({ count: 2 }, 'The songs matching the search term are displayed');
 
     await click('[data-test-rr=sort-by-title-desc]');
 
+    assert.ok(currentURL().includes('q=no'));
+    assert.ok(currentURL().includes('s=titleDesc'));
     assert.dom('[data-test-rr=song-list-item]:first-child').hasText('No One Loves Me & Neither Do I', 'A matching song that comes later in the alphabet appears on top');
     assert.dom('[data-test-rr=song-list-item]:last-child').hasText('Mind Eraser, No Chaser', 'A matching song that comes sooner in the alphabet appears at the bottom');
 
