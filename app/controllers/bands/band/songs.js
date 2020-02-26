@@ -20,11 +20,22 @@ export default Controller.extend({
     return options[this.sortBy];
   }),
 
-  sortedSongs: sort('model.songs', 'sortProperties'),
+  sortedSongs: sort('matchingSongs', 'sortProperties'),
 
   updateSortBy: action(function(sortBy) {
     this.set('sortBy', sortBy);
   }),
+
+  searchTerm: '',
+
+  matchingSongs: computed('model.songs.@each.title', 'searchTerm', function() {
+    let searchTerm = this.searchTerm.toLowerCase();
+    return this.model.get('songs').filter((song) => {
+      return song.title.toLowerCase().includes(searchTerm);
+    });
+  }),
+
+
 
   addSong: action(function(){
     this.set('isAddingSong', true);
