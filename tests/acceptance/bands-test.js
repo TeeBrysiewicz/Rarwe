@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { visit } from '@ember/test-helpers';
+import { visit, click } from '@ember/test-helpers';
 import { createBand } from 'rarwe/tests/helpers/custom-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { setupMirage } from 'ember-cli-mirage/test-support';
@@ -28,5 +28,18 @@ module('Acceptance | Bands', function(hooks) {
     assert.dom('[data-test-rr=band-list-item]').exists({ count: 2 }, 'A new band link is rendered');
     assert.dom('[data-test-rr=band-list-item]:last-child').hasText('Caspian', 'The new band link is rendered as the last item');
     assert.dom('[data-test-rr=songs-nav-item] > .active').exists('The Songs tab is active');
+  });
+
+  test('Sort songs in various ways', async function(assert) {
+    let band = this.server.create('band', { name: 'Them Crooked Vultures' });
+    this.server.create('song', { title: 'Elephants', rating: 5, band });
+    this.server.create('song', { title: 'New Fang', rating: 4, band });
+    this.server.create('song', { title: 'Spinning in Daffodils', rating: 5, band });
+    
+    await visit('/');
+    await click('[data-test-rr=band-link]');
+
+    assert.dom('[data-test-rr=song-list-item]:first-child').hasText('Elephants', 'The first song is the highest ranked, first one in the alphabet');
+    assert.dom('[data-test-rr=song-list-item]:last-child').hasText('New Fang', 'The last song is the lowest ranked, last one in the alphabet');
   });
 });
