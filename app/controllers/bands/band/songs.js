@@ -6,7 +6,7 @@ export default Controller.extend({
   queryParams: {
     sortBy: 's',
     searchTerm: 'q'
-  }
+  },
 
   isAddingSong: false,
   newSongTitle: '',
@@ -26,11 +26,6 @@ export default Controller.extend({
   }),
 
   sortedSongs: sort('matchingSongs', 'sortProperties'),
-
-  updateSortBy: action(function(sortBy) {
-    this.set('sortBy', sortBy);
-  }),
-
   searchTerm: '',
 
   matchingSongs: computed('model.songs.@each.title', 'searchTerm', function() {
@@ -39,8 +34,6 @@ export default Controller.extend({
       return song.title.toLowerCase().includes(searchTerm);
     });
   }),
-
-
 
   addSong: action(function(){
     this.set('isAddingSong', true);
