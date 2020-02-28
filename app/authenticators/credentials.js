@@ -22,8 +22,9 @@ export default Base.extend({
     return { userEmail, token };
   },
 
-  // restore(data) {
-  // },
+  async restore(data) {
+    return data;
+  },
 
   // invalidate(data) {
   // }
