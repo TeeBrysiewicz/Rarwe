@@ -11,15 +11,15 @@ export default Controller.extend({
 
   router: service(),
 
-  addBand: action(function(){
+  addBand: action(function() {
     this.set('isAddingBand', true);
   }),
 
-  cancelAddBand: action(function(){
+  cancelAddBand: action(function() {
     this.set('isAddingBand', false);
   }),
 
-  saveBand: action(async function(event){
+  saveBand: action(async function(event) {
     event.preventDefault();
     let newBand = this.store.createRecord('band', { name: this.newBandName });
     await newBand.save();
