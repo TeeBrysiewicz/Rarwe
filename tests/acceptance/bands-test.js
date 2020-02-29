@@ -1,8 +1,9 @@
 import { module, test } from 'qunit';
-import { visit, click, fillIn, currentURL } from '@ember/test-helpers';
+import { visit, click, fillIn, currentURL, pauseTest } from '@ember/test-helpers';
 import { loginAs, createBand } from 'rarwe/tests/helpers/custom-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { setupMirage } from 'ember-cli-mirage/test-support';
+import { percySnapshot } from 'ember-percy';
 
 module('Acceptance | Bands', function(hooks) {
   setupApplicationTest(hooks);
@@ -14,6 +15,8 @@ module('Acceptance | Bands', function(hooks) {
 
     await loginAs('dave@tcv.com');
     await visit('/');
+
+    percySnapshot('List of bands');
 
     assert.dom('[data-test-rr=band-link]').exists({ count: 2 }, 'All band links are rendered');
     assert.dom('[data-test-rr=band-list-item]:first-child').hasText("Radiohead", 'The first band link contains the band name');
@@ -42,10 +45,14 @@ module('Acceptance | Bands', function(hooks) {
     await visit('/');
     await click('[data-test-rr=band-link]');
 
+    percySnapshot('Sort songs - Default sorting order');
+
     assert.dom('[data-test-rr=song-list-item]:first-child').hasText('Elephants', 'The first song is the highest ranked, first one in the alphabet');
     assert.dom('[data-test-rr=song-list-item]:last-child').hasText('New Fang', 'The last song is the lowest ranked, last one in the alphabet');
   
     await click('[data-test-rr=sort-by-title-desc]');
+
+    await pauseTest();
 
     assert.equal(currentURL(), '/bands/1/songs?s=titleDesc');
     assert.dom('[data-test-rr=song-list-item]:first-child').hasText('Spinning In Daffodils', 'The first song is the one that comes last in the alphabet');

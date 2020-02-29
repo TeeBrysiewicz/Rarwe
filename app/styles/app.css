@@ -154,6 +154,21 @@ margin-bottom: 10px;
   margin-left: auto;
 }
 
+.rr-sort-panel {
+  align-self: center;
+}
+
+.rr-select {
+  height: 30px;
+  line-height: 30px;
+}
+
+#ember-testing {
+  font-family: 'avenir next', avenir, sans-serif;
+  color: var(--near-white);
+  background-color: var(--mid-grey) !important;
+}
+
 .rr-sort-button {
   background-color: var(--mid-grey);
   color: var(--near-white);
@@ -262,6 +277,7 @@ margin-bottom: 10px;
   margin: .25em 0;
   color: var(--error-color);
 }
+
 
 
 
