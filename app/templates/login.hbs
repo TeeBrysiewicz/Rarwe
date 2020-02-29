@@ -8,6 +8,7 @@
         @value={{this.email}}
         class="rr-input ml-auto"
         id="email"
+        {{on "input" this.resetBaseErrors}}
       />
     </div>
     <div class="rr-form-row-inline">
@@ -17,6 +18,7 @@
         @value={{this.password}}
         class="rr-input ml-auto"
         id="password"
+        {{on "input" this.resetBaseErrors}}
       />
     </div>
     <div class="rr-form-footer">

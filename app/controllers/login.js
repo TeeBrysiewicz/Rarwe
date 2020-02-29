@@ -19,5 +19,9 @@ export default Controller.extend(Validations, {
     let { email, password } = this;
     await this.session.authenticate('authenticator:credentials', email, password);
     await this.router.transitionTo('bands');
+  }),
+
+  resetBaseErrors: action(function() {
+    ths.set('baseErrors', []);
   })
 });
