@@ -1,5 +1,5 @@
 <div class="rr-form-container">
-  <h3>Sign up to R&R</h3>
+  <h3 data-test-rr="form-header">Sign up to R&R</h3>
   <form {{on "submit" this.signUp}}>
     {{#each this.baseErrors as |error|}}
       <div class="rr-error-message mb2" datat-test-rr="error-message">{{error}}</div>

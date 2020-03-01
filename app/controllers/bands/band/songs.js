@@ -26,9 +26,9 @@ export default Controller.extend({
     return options[this.sortBy];
   }),
 
-  updateSortBy: action(function(sortBy) {
-    this.set('sortBy', sortBy);
-  }),
+  // updateSortBy: action(function(sortBy) {
+  //   this.set('sortBy', sortBy);
+  // }),
 
   sortedSongs: sort('matchingSongs', 'sortProperties'),
   searchTerm: '',
