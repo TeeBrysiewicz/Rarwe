@@ -13,15 +13,6 @@ export default Controller.extend({
     this.set('isEditing', true);
   }),
 
-  // async save() {
-  //   let band = this.model;
-  //   this.set('showErrors.description', true);
-  //   if (band.validations.isValid) {
-  //     await band.save();
-  //     this.set('isEditing', false);
-  //   }
-  // },
-
   stopEditing: action(async function() {
     this.set('isEditing', false);
   }),

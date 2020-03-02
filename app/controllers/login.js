@@ -14,12 +14,6 @@ const Validations = buildValidations({
 export default Controller.extend(Validations, {
   session: service(),
   router: service(),
-  
-  // init() {
-  //   this._super(...arguments);
-  //   this.set('showErrors', { email: false, password: false });
-  //   this.set('baseErrors', []);
-  // },
 
   signIn: action(async function(event) {
     event.preventDefault();

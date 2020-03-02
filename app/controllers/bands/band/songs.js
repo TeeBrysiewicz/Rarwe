@@ -68,5 +68,4 @@ export default Controller.extend({
     song.set('rating', song.rating === rating ? 0 : rating);
     song.save();
   })
-
 });

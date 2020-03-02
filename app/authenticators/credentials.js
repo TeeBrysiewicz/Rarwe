@@ -26,8 +26,5 @@ export default Base.extend({
 
   async restore(data) {
     return data;
-  },
-
-  // invalidate(data) {
-  // }
+  }
 });
