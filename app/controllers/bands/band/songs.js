@@ -26,9 +26,10 @@ export default Controller.extend({
     return options[this.sortBy];
   }),
 
-  // updateSortBy: action(function(sortBy) {
-  //   this.set('sortBy', sortBy);
-  // }),
+  updateSortBy: action(function(event) {
+    let sortBy = event.target.value;
+    this.set('sortBy', sortBy);
+  }),
 
   sortedSongs: sort('matchingSongs', 'sortProperties'),
   searchTerm: '',
@@ -45,15 +46,15 @@ export default Controller.extend({
     return `New ${capitalize(bandName)} song`;
   }),
 
-  addSong: action(function(){
+  addSong: action(function() {
     this.set('isAddingSong', true);
   }),
 
-  cancelAddSong: action(function(){
+  cancelAddSong: action(function() {
     this.set('isAddingSong', false);
   }),
 
-  saveSong: action(async function(event){
+  saveSong: action(async function(event) {
     event.preventDefault();
     let newSong = this.store.createRecord('song', {
       title: this.get('newSongTitle'),
