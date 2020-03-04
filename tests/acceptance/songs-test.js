@@ -1,5 +1,5 @@
 import { module, test } from 'qunit';
-import { visit, click, fillIn, currentURL } from '@ember/test-helpers';
+import { visit, click, fillIn } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import { loginAs } from 'rarwe/tests/helpers/custom-helpers';
@@ -25,8 +25,8 @@ module ('Acceptance | Songs', function(hooks) {
     assert.dom('[data-test-rr=song-list-item]:last-child').hasText('Sober', 'The last song is correct');
   });
 
-  test('Create a band', async function(assert) {
-    let band = this.server.create('band', { name: 'Tool' });
+  test('Create a song', async function(assert) {
+    this.server.create('band', { name: 'Tool' });
 
     await loginAs('dave@tcv.com');
     await visit('/');
