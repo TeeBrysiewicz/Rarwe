@@ -1,9 +1,9 @@
-<div class="rr-sidebar">
-  <h1 class="text-lg mb-4">Bands</h1>
-  <ul class="rr-list">
+<div class="float-left w-1/3">
+  <h1 class="text-lg mb-4">Your Bands</h1>
+  <ul class="list-none band-list">
     {{#each this.model as |band|}}
-      <li class="rr-list-item" data-test-rr="band-list-item">
-        <LinkTo @route="bands.band" @model={{band.id}} class="rr-band-link" data-test-rr="band-link">
+      <li class="mb-2 ml-2 hover:text-yellow cursor-pointer" data-test-rr="band-list-item">
+        <LinkTo @route="bands.band" @model={{band.id}} class="inline-block" data-test-rr="band-link">
           {{capitalize band.name}}
           <span class="rr-pointer">
             {{fa-icon "angle-right"}}
@@ -13,13 +13,13 @@
     {{/each}}
   </ul>
 
-  <div class="rr-new-label">
+  <div>
     {{#if this.isAddingBand}}
-      <form class="rr-inline-form" {{on "submit" this.saveBand}}>
+      <form class="mt-4" {{on "submit" this.saveBand}}>
         <Input 
           @type="text"
           @value={{this.newBandName}}
-          class="rr-input"
+          class="pl-2 outline-none text-black"
           placeholder="New Band"
           data-test-rr="new-band-input"
         />
@@ -27,16 +27,18 @@
         <div class="rr-inline-form-group ml2">
           <button 
             type="submit"
-            class="rr-action-button"
+            class="bg-white p-2 m-2 rounded text-black"
             disabled={{this.isAddButtonDisabled}}
             data-test-rr="new-band-button">
+              {{fa-icon "plus"}}
               Add
           </button>
 
           <button
             type="button"
-            clas="rr-cancel-icon"
+            class="text-lg mx-auto"
             {{on "click" this.cancelAddBand}}>
+              Cancel
               {{fa-icon "times"}}
           </button>
         </div>
@@ -45,7 +47,7 @@
       <br>
       <label
         type="label"
-        class="avenir bn bg-white text-black p-3 mt-1 rounded"
+        class="avenir bn bg-white text-black p-3 mt-1 rounded cursor-pointer"
         data-test-rr="new-band-label"
         {{on "click" this.addBand}}>
           {{fa-icon "plus"}}
@@ -55,6 +57,6 @@
   </div>
 </div>
 
-<div class="rr-main-panel">
+<div class="float-left w-2/3">
   {{outlet}}
 </div>

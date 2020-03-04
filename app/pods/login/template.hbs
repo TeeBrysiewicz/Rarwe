@@ -2,12 +2,12 @@
   <h3 data-test-rr="form-header" class="text-center p-4">Log in to R&R</h3>
   <form {{on "submit" this.signIn}} class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     {{#each this.baseErrors as |error|}}
-      <div class="rr-error-message mb2" datat-test-rr="error-message">{{error}}</div>
+      <div class="text-red-500 text-center" datat-test-rr="error-message">{{error}}</div>
     {{/each}}
 
     <div class="mb-4">
       {{#if this.showErrors.email}}
-        <div class="rr-form-field-error" data-test-rr="email-error">
+        <div class="text-red-500" data-test-rr="email-error">
           {{v-get this "email" "message"}}
         </div>
       {{/if}}
@@ -29,7 +29,7 @@
 
     <div class="mb-6">
       {{#if this.showErrors.password}}
-        <div class="rr-form-field-error" data-test-rr="password-error">{{v-get this "password" "message"}}</div>
+        <div class="text-red-500" data-test-rr="password-error">{{v-get this "password" "message"}}</div>
       {{/if}}
 
       <label class="block text-black text-sm font-bold mb-2" for="password">

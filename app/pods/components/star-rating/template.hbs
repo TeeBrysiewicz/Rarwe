@@ -1,7 +1,7 @@
 {{#each this.stars as |star|}}
   <button
     type="button"
-    class="rating-star"
+    class="rating-star text-orange-300"
     data-test-rr={{concat "star-rating-" star.rating}}
     {{on "click" (fn this.setRating star.rating)}}
   >

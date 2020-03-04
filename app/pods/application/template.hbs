@@ -1,18 +1,18 @@
-<div class="rr-container">
-  <div class="rr-page-header">
-    <LinkTo @route="index" class="rr-header-link">
-      <h1 class="rr-page-title">{{fa-icon "music"}} Rock & Roll<small class="rr-subtitle"> with Ember.js</small></h1>
+<div class="rr-container container mx-auto">
+  <div class="flex border-b-2 border-white my-2 py-2">
+    <LinkTo @route="index" class="flex-1 hover:text-yellow">
+      <h1 class="text-lg">{{fa-icon "music"}} Rock & Roll<small> with Ember.js</small></h1>
     </LinkTo>
 
     {{#if this.session.isAuthenticated}}
-      <div class="rr-user-panel">
+      <div class="flex-1 text-right">
         <span data-test-rr="user-email">{{this.session.data.authenticated.userEmail}}</span>
         |
         <span><LinkTo @route="logout" data-test-rr="logout">Logout</LinkTo></span>
       </div>
     {{/if}}
   </div>
-  <div class="rr-main-content">
+  <div class="container mx-auto">
     {{outlet}}
   </div>
 </div>
