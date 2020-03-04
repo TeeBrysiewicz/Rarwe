@@ -1,57 +1,3 @@
-{{!-- <div class="rr-form-container">
-  <h3 data-test-rr="form-header">Sign up to R&R</h3>
-  <form {{on "submit" this.signUp}}>
-    {{#each this.baseErrors as |error|}}
-      <div class="rr-error-message mb2" datat-test-rr="error-message">{{error}}</div>
-    {{/each}}
-    <div class="rr-form-row-inline">
-      {{#if this.showErrors.email}}
-        <div class="rr-form-field-error" data-test-rr="email-error">{{v-get this.model "email" "message"}}</div>
-      {{/if}}
-      <label for="email">Email</label>
-      <Input
-        @type="email"
-        @value={{this.model.email}}
-        class="rr-input ml-auto"
-        id="email"
-        {{on "blur" (fn this.setShowErrors "email")}}
-        {{on "input" this.resetBaseErrors}}
-      />
-    </div>
-    <div class="rr-form-row-inline">
-      {{#if this.showErrors.password}}
-        <div class="rr-form-field-error" data-test-rr="password-error">{{v-get this.model "password" "message"}}</div>
-      {{/if}}
-      <label for="password">Password</label>
-      <Input
-        @type="password"
-        @value={{this.model.password}}
-        class="rr-label ml-auto"
-        id="password"
-        {{on "blur" (fn this.setShowErrors "password")}}
-        {{on "input" this.resetBaseErrors}}
-      />
-    </div>
-    <div class="rr-form-footer">
-      <div class="rr-button-panel">
-        <button
-          type="submit"
-          class="rr-action-button"
-          data-test-rr="sign-up-button"
-          disabled={{v-get this.model "isInvalid"}}
-        >
-          Sign up
-        </button>
-      </div>
-      <div class="rr-cta">
-        <span class="mrl">Already have an account?</span>
-        <LinkTo @route="login" class="underline">Log in</LinkTo>
-      </div>
-    </div>
-  </form>
-</div>
- --}}
-
  <div class="w-full max-w-xs mx-auto">
   <h3 data-test-rr="form-header" class="text-center p-4">Sign up to R&R</h3>
   <form {{on "submit" this.signUp}} class="w-full max-w-sm">
@@ -123,7 +69,7 @@
         >
           Sign Up
         </button>
-        <LinkTo @route="login" class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+        <LinkTo @route="login" class="inline-block align-baseline font-bold text-sm text-white hover:text-blue-800 px-6">
           Log in
         </LinkTo>
       </div>

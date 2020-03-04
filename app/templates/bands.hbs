@@ -1,4 +1,5 @@
 <div class="rr-sidebar">
+  <h1 class="text-lg mb-4">Bands</h1>
   <ul class="rr-list">
     {{#each this.model as |band|}}
       <li class="rr-list-item" data-test-rr="band-list-item">
@@ -41,9 +42,10 @@
         </div>
       </form>
     {{else}}
+      <br>
       <label
         type="label"
-        class="avenir bn bg-transparent near-white"
+        class="avenir bn bg-white text-black p-3 mt-1 rounded"
         data-test-rr="new-band-label"
         {{on "click" this.addBand}}>
           {{fa-icon "plus"}}
