@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'rarwe',
+    podModulePrefix: 'rarwe/pods',
     environment,
     rootURL: '/',
     locationType: 'auto',
