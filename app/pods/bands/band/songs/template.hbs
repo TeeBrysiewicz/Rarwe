@@ -1,7 +1,7 @@
-<div class="rr-controls-panel">
-  <div class="rr-sort-panel">
+<div class="flex mb-6 p-1 justify-between">
+  <div class="self-center">
     <select
-      class="rr-select text-black"
+      class="h-30 min-h-30 text-black m-2"
       data-test-rr="sort-selector"
       {{on "change" this.updateSortBy}}
     >
@@ -12,26 +12,26 @@
     </select>
   </div>
 
-  <div class="rr-search-panel bg-white rounded">
+  <div class="bg-white rounded ml-auto h-8 m-2">
     <Input
       @type="text"
-      class="rr-input text-black outline-none"
+      class="text-black outline-none pl-1"
       @value={{this.searchTerm}}
       data-test-rr="search-box"
       placeholder="Search..."
     />
-    <div class="rr-search-icon rounded">{{fa-icon "search"}}</div>
+    <div class="inline-block text-black bg-white px-2 p-1 cursor-pointer rounded">{{fa-icon "search"}}</div>
   </div>
 </div>
 
-<ul class="rr-list">
+<ul>
   {{#each this.sortedSongs as |song|}}
-    <li class="rr-list-item" data-test-rr="song-list-item">
+    <li class="mb-2" data-test-rr="song-list-item">
       {{capitalize song.title}}
       <StarRating
-      class="fr"
-      @rating={{song.rating}}
-      @onClick={{fn this.updateRating song}}
+        class="fr"
+        @rating={{song.rating}}
+        @onClick={{fn this.updateRating song}}
       />
     </li>
   {{else}}
